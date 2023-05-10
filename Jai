@@ -1,0 +1,19 @@
+#Load the dataset
+data=read.csv(file.choose(),header=T)
+attach(data)
+
+#fit linear regression model
+model=lm(Scores~Hours,data=data)
+summary(model)
+
+#Load the packages
+install.packages("ggplot2")
+install.packages("readr")
+
+#visualize the data
+plot(data)
+abline(model,col="blue")
+
+#prediction of score, if student studies 9.25 hrs/day
+p=predict(model,data.frame(Hours=9.25))
+p
